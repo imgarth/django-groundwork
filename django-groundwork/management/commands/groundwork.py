@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand, CommandError
 from django.db import models
-from placeholders import *
+from .placeholders import *# [for Python 3.x]add "." in front of "placeholders"
 import os
     
 class Command(BaseCommand):
@@ -74,8 +74,8 @@ class Command(BaseCommand):
             if not os.path.exists(template_dir):
                 os.makedirs(template_dir)
             
-            print "Generate base template? [Y/N]?"
-            yn = raw_input()
+            print("Generate base template? [Y/N]?")# [for Python 3.x]print()
+            yn = input()# [for Python 3.x]
             if yn.lower() == 'y':
                 f = open(os.path.join(TEMPLATE_DIR, 'base.html') , 'w')
                 f.write(TEMPLATES_BASE)
@@ -104,5 +104,5 @@ class Command(BaseCommand):
             f.close()
                 
         except:
-            print "Usage : manage.py groundwork <app> <model>"
+            print("Usage : manage.py groundwork <app> <model>")# [for Python 3.x]print()
 
